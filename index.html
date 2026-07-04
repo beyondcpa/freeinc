@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Pretendard","Malgun Gothic",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;color:#10233F;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:-.01em;font-size:18px;line-height:1.7;word-break:keep-all;text-wrap:pretty}
+a{color:inherit;text-decoration:none}
+:root{--brand:#2B6EF6;--brand-d:#1D5AE0;--sky:#5B9CFF}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,50px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,-40px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(22,164,75,.20)}50%{box-shadow:0 0 0 8px rgba(22,164,75,.03)}}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes shine{0%{transform:translateX(-170%) skewX(-18deg)}42%,100%{transform:translateX(460%) skewX(-18deg)}}
+@keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.15)}}
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+@keyframes bounceY{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(9px)}}
+@keyframes ctaGlow{0%,100%{box-shadow:0 16px 34px rgba(43,110,246,.34)}50%{box-shadow:0 18px 48px rgba(43,110,246,.62)}}
+@keyframes borderPulse{0%,100%{border-color:#E5EDF8}50%{border-color:#9FC2FF}}
+@keyframes hueflow{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+@keyframes popIn{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes badgeWobble{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes ring{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+@media(max-width:880px){
+ [data-navlinks]{display:none!important}
+ [data-navtel]{display:none!important}
+ [data-burger]{display:flex!important}
+ [data-navcta]{display:none!important}
+ [data-mcta]{display:flex!important}
+ [data-dock]{display:none!important}
+ body{padding-bottom:76px}
+}
+@media(max-width:560px){
+ [data-ctable]{grid-template-columns:1.15fr .9fr .95fr!important;font-size:14.5px!important}
+ [data-toast]{left:12px!important;right:12px!important;bottom:86px!important;max-width:none!important}
+}
+[data-more]{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin-top .35s ease,padding-top .35s ease;margin-top:0;padding-top:0}
+[data-svc]:hover [data-more]{max-height:200px;opacity:1;margin-top:14px;padding-top:14px}
+[data-svc] svg{transition:transform .3s ease}
+[data-svc]:hover svg{transform:scale(1.12) rotate(-6deg)}
+[data-svc] h3{transition:color .25s}
+[data-svc]:hover h3{color:var(--brand)}
+[data-step]:last-child [data-arw]{display:none}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+@media(max-width:880px){[data-arw]{display:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</helmet>
+
+<div id="progress" style="position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,#2B6EF6,#5B9CFF,#8F6BFF,#2B6EF6);background-size:300% 100%;animation:gradientShift 4s linear infinite;box-shadow:0 0 12px rgba(43,110,246,.6);z-index:200;transition:width .1s linear"></div>
+
+<header id="hd" style="position:sticky;top:0;z-index:100;background:rgba(255,255,255,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .25s,box-shadow .25s">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:72px">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.02em;color:#10233F">
+      <span style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--sky));display:grid;place-items:center;color:#fff;font-size:17px;font-weight:900;box-shadow:0 6px 16px rgba(43,110,246,.35)">B</span>
+      비욘드 법인무료설립센터
+    </a>
+    <nav data-navlinks="" style="display:flex;gap:28px;font-size:15.5px;font-weight:600;color:#5A6B85">
+      <a href="#services" style-hover="color:var(--brand)">서비스</a>
+      <a href="#compare" style-hover="color:var(--brand)">왜 회계사와 함께?</a>
+      <a href="#free" style-hover="color:var(--brand)">설립비용</a>
+      <a href="#profile" style-hover="color:var(--brand)">센터 소개</a>
+      <a href="#reviews" style-hover="color:var(--brand)">후기</a>
+      <a href="#faq" style-hover="color:var(--brand)">FAQ</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div data-navtel="" style="font-weight:800;font-size:15.5px;color:#10233F;text-align:right;line-height:1.2"><small style="color:#93A2BC;font-weight:600;font-size:11px;display:block">대표상담</small>010-9691-0177</div>
+      <a href="#apply" data-navcta="" style="display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:15.5px;padding:12px 20px;border-radius:12px;position:relative;overflow:hidden;background:var(--brand);color:#fff;box-shadow:0 8px 20px rgba(43,110,246,.3);transition:transform .18s,background .18s" style-hover="transform:translateY(-2px);background:var(--brand-d)" style-before="content:'';position:absolute;top:0;left:0;width:65%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 45%,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,transparent);animation:shine 2.8s ease-in-out infinite;pointer-events:none">무료 상담 신청</a>
+      <div data-burger="" onClick="{{ toggleMenu }}" style="display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px">
+        <span style="width:22px;height:2px;background:#10233F;border-radius:2px"></span>
+        <span style="width:22px;height:2px;background:#10233F;border-radius:2px"></span>
+        <span style="width:22px;height:2px;background:#10233F;border-radius:2px"></span>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid #E5EDF8;box-shadow:0 14px 28px rgba(13,24,38,.08);padding:12px 22px 18px;display:flex;flex-direction:column;gap:2px">
+      <a href="#services" onClick="{{ closeMenu }}" style="padding:12px 4px;font-weight:600;color:#26364E;border-bottom:1px solid #F0F4FA">서비스</a>
+      <a href="#compare" onClick="{{ closeMenu }}" style="padding:12px 4px;font-weight:600;color:#26364E;border-bottom:1px solid #F0F4FA">왜 회계사</a>
+      <a href="#free" onClick="{{ closeMenu }}" style="padding:12px 4px;font-weight:600;color:#26364E;border-bottom:1px solid #F0F4FA">설립비용</a>
+      <a href="#reviews" onClick="{{ closeMenu }}" style="padding:12px 4px;font-weight:600;color:#26364E;border-bottom:1px solid #F0F4FA">후기</a>
+      <a href="#faq" onClick="{{ closeMenu }}" style="padding:12px 4px;font-weight:600;color:#26364E">FAQ</a>
+      <a href="#apply" onClick="{{ closeMenu }}" style="margin-top:12px;text-align:center;font-weight:700;padding:15px;border-radius:12px;background:var(--brand);color:#fff">무료 상담 신청</a>
+    </div>
+  </sc-if>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="top" style="position:relative;overflow:hidden;background:linear-gradient(180deg,#EEF4FF,#fff 78%)">
+  <video autoplay="" muted="" loop="" playsinline="" preload="auto" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none"><source src="assets/hero-bg.mp4" type="video/mp4"></video>
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(105deg,rgba(240,245,255,.95) 0%,rgba(240,245,255,.86) 34%,rgba(240,245,255,.5) 66%,rgba(240,245,255,.28) 100%)"></div>
+  <div style="position:absolute;top:-260px;right:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(91,156,255,.24),transparent 68%);animation:drift1 20s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:absolute;bottom:-220px;left:-180px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(43,110,246,.12),transparent 68%);animation:drift2 24s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:absolute;top:14%;right:9%;width:120px;height:120px;border-radius:50%;border:2px dashed rgba(43,110,246,.22);animation:spinSlow 22s linear infinite;pointer-events:none;z-index:1"></div>
+  <div style="position:absolute;bottom:16%;left:6%;width:64px;height:64px;border-radius:50%;border:2px solid rgba(43,110,246,.16);animation:floaty 6s ease-in-out infinite;pointer-events:none;z-index:1"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden">
+    <span style="position:absolute;top:18%;left:12%;width:10px;height:10px;border-radius:50%;background:rgba(43,110,246,.35);animation:floaty 7s ease-in-out infinite"></span>
+    <span style="position:absolute;top:70%;left:22%;width:7px;height:7px;border-radius:50%;background:rgba(91,156,255,.45);animation:floaty 5.5s ease-in-out infinite .6s"></span>
+    <span style="position:absolute;top:30%;left:84%;width:8px;height:8px;border-radius:50%;background:rgba(43,110,246,.3);animation:drift1 9s ease-in-out infinite"></span>
+    <span style="position:absolute;top:62%;left:72%;width:13px;height:13px;border-radius:50%;background:rgba(91,156,255,.22);animation:floaty 8s ease-in-out infinite 1s"></span>
+    <span style="position:absolute;top:12%;left:56%;width:6px;height:6px;border-radius:50%;background:rgba(43,110,246,.4);animation:drift2 7.5s ease-in-out infinite"></span>
+    <span style="position:absolute;top:86%;left:46%;width:9px;height:9px;border-radius:50%;background:rgba(91,156,255,.3);animation:floaty 6.5s ease-in-out infinite .3s"></span>
+  </div>
+  <div style="position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:0 22px">
+
+    <!-- Variant A · 스플릿형 -->
+    <sc-if value="{{ isHeroA }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:52px;align-items:center;padding:88px 0 98px">
+        <div>
+          <span data-reveal="" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--brand-d);background:#E6F0FF;border:1px solid #CFE0FF;padding:9px 16px;border-radius:100px;margin-bottom:24px"><span style="width:7px;height:7px;border-radius:50%;background:#16A44B;animation:pulse 2s infinite"></span>법인설립 무료지원센터 · 상담 수수료 0원</span>
+          <h1 data-reveal="" data-delay="90" style="font-size: clamp(38px,5.8vw,64px); font-weight: 900; letter-spacing: -.04em; line-height: 1.16; color: #16103F"><span style="color:var(--brand)">법인 전문 회계사</span>가<br>처음부터<br><span style="color:var(--brand)">최대한 유리한 구조</span>를<br>만듭니다.</h1>
+          <p data-reveal="" data-delay="180" style="font-size:clamp(17px,2.1vw,21px);color:#2E3D54;margin-top:22px;line-height:1.72;max-width:520px">등기만 대신 대행하는 곳은 많습니다. <br>비욘드 법인무료설립센터는 법인 전문 공인회계사가&nbsp;<br><b style="color: rgb(38, 54, 78);">자본금·업종</b><b style="letter-spacing: -0.18px; color: rgb(38, 54, 78);">·</b><b style="color: rgb(38, 54, 78);">지분·절세 구조까지&nbsp;직접 설계</b>해, <br><b>시작부터 완벽히 준비된 법인</b>을 만듭니다.</p>
+          <div data-reveal="" data-delay="270" style="display:flex;gap:12px;margin-top:34px;flex-wrap:wrap">
+            <a href="#apply" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:18px;padding:18px 38px;border-radius:14px;position:relative;overflow:hidden;background:var(--brand);color:#fff;box-shadow:0 16px 34px rgba(43,110,246,.34);transition:transform .18s,box-shadow .22s,background .18s;animation:ctaGlow 2.6s ease-in-out infinite" style-hover="transform:translateY(-3px);background:var(--brand-d);box-shadow:0 22px 46px rgba(43,110,246,.44)" style-before="content:'';position:absolute;top:0;left:0;width:65%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 45%,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,transparent);animation:shine 2.8s ease-in-out infinite;pointer-events:none">1분 무료 상담 신청</a>
+            <a href="#free" style="display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;padding:18px 34px;border-radius:14px;background:#fff;color:#10233F;border:1.5px solid #D6E1F2;transition:transform .18s,border-color .18s,color .18s" style-hover="border-color:var(--brand);color:var(--brand);transform:translateY(-3px)">설립비용 보기</a>
+          </div>
+          <div data-reveal="" data-delay="360" style="display:flex;gap:30px;margin-top:44px;flex-wrap:wrap">
+            <div><div style="font-size:clamp(24px,2.8vw,32px);font-weight:900;letter-spacing:-.02em;color:#10233F">0<span style="font-size:16px;color:var(--brand);font-weight:800">원</span></div><div style="font-size:15px;color:#3D4C66;font-weight:700;margin-top:4px">설립 수수료 무료</div></div>
+            <div><div style="font-size:clamp(24px,2.8vw,32px);font-weight:900;letter-spacing:-.02em;color:#10233F">원스톱</div><div style="font-size:15px;color:#3D4C66;font-weight:700;margin-top:4px">설립(법률)·세무까지 한 번에</div></div>
+            <div><div style="font-size:clamp(24px,2.8vw,32px);font-weight:900;letter-spacing:-.02em;color:#10233F">법무사 지원</div><div style="font-size:15px;color:#3D4C66;font-weight:700;margin-top:4px">든든한 협업 체계</div></div>
+          </div>
+        </div>
+        <div data-reveal="" data-delay="180" data-zoom="" style="position:relative;width:75%;margin:0 auto">
+          <div style="position:relative;border-radius:26px;overflow:hidden;box-shadow:0 32px 74px rgba(20,50,110,.22);aspect-ratio:4/4.4;border:6px solid #fff;background:linear-gradient(135deg,#dfe9ff,#f2f7ff)">
+            <img src="assets/consult.jpg" alt="비욘드 세무사 1:1 상담" loading="eager" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;animation:kenburns 20s ease-in-out infinite alternate">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(13,24,38,.14));pointer-events:none"></div>
+          </div>
+          <div style="position:absolute;top:16px;left:-40px;z-index:3;background:#fff;border:1px solid #DCE7F7;border-radius:18px;padding:17px 22px;box-shadow:0 22px 54px rgba(20,50,110,.28);display:flex;align-items:center;gap:14px;animation:bob 4s ease-in-out infinite">
+            <span style="width:50px;height:50px;border-radius:13px;background:#E4F7EC;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="#16A44B" stroke-width="2.6"><path d="M20 6L9 17l-5-5"></path></svg></span>
+            <div><b style="display:block;font-size:18px;font-weight:900;color:#10233F;letter-spacing:-.01em">설립수수료 0원</b><span style="font-size:14px;color:#3D4C66;font-weight:600">법무사 수수료 지원</span></div>
+          </div>
+          <div style="position:absolute;bottom:22px;right:-40px;z-index:3;background:#fff;border:1px solid #DCE7F7;border-radius:18px;padding:17px 22px;box-shadow:0 22px 54px rgba(20,50,110,.28);display:flex;align-items:center;gap:14px;animation:bob 4.6s ease-in-out infinite .5s">
+            <span style="width:50px;height:50px;border-radius:13px;background:#E6F0FF;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="var(--brand)" stroke-width="2.4"><path d="M3 3v18h18M7 13l3-3 3 2 5-6"></path></svg></span>
+            <div><b style="display:block;font-size:18px;font-weight:900;color:#10233F;letter-spacing:-.01em">절세 구조 설계</b><span style="font-size:14px;color:#3D4C66;font-weight:600">회계사가 직접</span></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- Variant B · 폼 우선형 -->
+    <sc-if value="{{ isHeroB }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:center;padding:78px 0 90px">
+        <div>
+          <span data-reveal="" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--brand-d);background:#E6F0FF;border:1px solid #CFE0FF;padding:9px 16px;border-radius:100px;margin-bottom:22px"><span style="width:7px;height:7px;border-radius:50%;background:#16A44B;animation:pulse 2s infinite"></span>회계사 직접 상담 · 설립 수수료 0원</span>
+          <h1 data-reveal="" data-delay="90" style="font-size:clamp(34px,5.2vw,58px);font-weight:900;letter-spacing:-.04em;line-height:1.15;color:#10233F">무료로 세우고,<br><span style="color:var(--brand)">세금까지</span> 지켜드립니다</h1>
+          <p data-reveal="" data-delay="180" style="font-size:clamp(16.5px,2vw,20px);color:#5A6B85;margin-top:20px;line-height:1.7;max-width:500px">회계사가 설립부터 세무까지 직접 챙깁니다. 오른쪽에 남겨주시면 <b style="color:#26364E">회계사가 직접</b> 연락드립니다.</p>
+          <div data-reveal="" data-delay="270" style="display:flex;gap:28px;margin-top:34px;flex-wrap:wrap">
+            <div><div style="font-size:clamp(26px,3vw,36px);font-weight:900;color:#10233F;letter-spacing:-.02em">0<span style="font-size:17px;color:var(--brand);font-weight:800">원</span></div><div style="font-size:13.5px;color:#93A2BC;font-weight:600">설립 수수료</div></div>
+            <div><div style="font-size:clamp(26px,3vw,36px);font-weight:900;color:#10233F;letter-spacing:-.02em">7<span style="font-size:17px;color:var(--brand);font-weight:800">일 내</span></div><div style="font-size:13.5px;color:#3D4C66;font-weight:700">설립 완료</div></div>
+            <div><div style="font-size:clamp(26px,3vw,36px);font-weight:900;color:#10233F;letter-spacing:-.02em">무료</div><div style="font-size:13.5px;color:#3D4C66;font-weight:700">정부지원금 진단</div></div>
+          </div>
+          <div data-reveal="" data-delay="360" style="display:flex;gap:10px;margin-top:26px;flex-wrap:wrap">
+            <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#26364E;background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:8px 15px;box-shadow:0 2px 10px rgba(13,24,38,.05)"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#16A44B" stroke-width="2.6"><path d="M20 6L9 17l-5-5"></path></svg>정부지원금 진단 무료</span>
+            <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#26364E;background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:8px 15px;box-shadow:0 2px 10px rgba(13,24,38,.05)"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#16A44B" stroke-width="2.6"><path d="M20 6L9 17l-5-5"></path></svg>창업 세액감면 안내</span>
+          </div>
+        </div>
+        <div id="heroFormBox" data-reveal="" data-delay="150" data-zoom="" style="background:#fff;border-radius:24px;padding:34px 32px;box-shadow:0 30px 70px rgba(20,50,110,.18);border:1px solid #EDF2FB">
+          <h3 style="font-size:23px;font-weight:800;letter-spacing:-.015em;color:#10233F">1분 무료 상담 신청</h3>
+          <p style="color:#5A6B85;font-size:15px;margin-top:6px">회계사가 직접 연락드립니다.</p>
+          <div style="margin-top:16px"><label style="display:block;font-size:14px;font-weight:700;margin-bottom:7px;color:#26364E">대표자 성함 <span style="color:#DB3B3B">*</span></label><input id="h_name" type="text" placeholder="홍길동" style="width:100%;padding:14px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"></div>
+          <div style="margin-top:14px"><label style="display:block;font-size:14px;font-weight:700;margin-bottom:7px;color:#26364E">연락처 <span style="color:#DB3B3B">*</span></label><input id="h_tel" type="tel" placeholder="010-0000-0000" style="width:100%;padding:14px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"></div>
+          <div style="margin-top:14px"><label style="display:block;font-size:14px;font-weight:700;margin-bottom:7px;color:#26364E">업종 / 사업 내용 <span style="color:#93A2BC;font-weight:600">(선택)</span></label><input id="h_biz" type="text" placeholder="예: 온라인 쇼핑몰, IT, 도소매" style="width:100%;padding:14px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"></div>
+          <div style="margin-top:14px"><label style="display:block;font-size:14px;font-weight:700;margin-bottom:7px;color:#26364E">설립 희망 시기 <span style="color:#93A2BC;font-weight:600">(선택)</span></label><select id="h_when" style="width:100%;padding:14px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F;background:#fff" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"><option value="">선택</option><option>가능한 빨리</option><option>1개월 이내</option><option>3개월 이내</option><option>아직 알아보는 중</option></select></div>
+          <label style="display:flex;align-items:flex-start;gap:9px;margin-top:16px;font-size:13px;color:#5A6B85;line-height:1.5;cursor:pointer"><input id="h_agree" type="checkbox" style="width:17px;height:17px;margin-top:1px;accent-color:var(--brand);flex-shrink:0"><span>개인정보 수집·이용에 동의합니다. <a href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="color:var(--brand);text-decoration:underline">개인정보처리방침</a> <span style="color:#DB3B3B">*</span></span></label>
+          <button onClick="{{ submitHero }}" style="width:100%;margin-top:22px;font-weight:700;font-size:17px;padding:17px;border-radius:12px;border:none;cursor:pointer;position:relative;overflow:hidden;background:var(--brand);color:#fff;box-shadow:0 14px 30px rgba(43,110,246,.32);font-family:inherit;transition:transform .18s,background .18s" style-hover="transform:translateY(-2px);background:var(--brand-d)" style-before="content:'';position:absolute;top:0;left:0;width:65%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 45%,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,transparent);animation:shine 3s ease-in-out infinite;pointer-events:none">무료 상담 신청하기</button>
+          <p style="font-size:12.5px;color:#93A2BC;text-align:center;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#93A2BC" stroke-width="2"><path d="M19 11H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2zM7 11V7a5 5 0 0 1 10 0v4"></path></svg>상담 내용은 비밀이 보장됩니다.</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- Variant C · 신뢰 배너형 -->
+    <sc-if value="{{ isHeroC }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;max-width:880px;margin:0 auto;padding:82px 0 8px">
+        <div data-reveal="" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+          <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:var(--brand-d);background:#E6F0FF;border:1px solid #CFE0FF;border-radius:100px;padding:8px 16px">정부지원금 진단</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:var(--brand-d);background:#E6F0FF;border:1px solid #CFE0FF;border-radius:100px;padding:8px 16px">회계사 직접 설계</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#16A44B;background:#E4F7EC;border:1px solid #C6ECD3;border-radius:100px;padding:8px 16px">설립 수수료 0원</span>
+        </div>
+        <h1 data-reveal="" data-delay="90" style="font-size:clamp(38px,5.8vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1.13;color:#10233F">세금 새지 않는 법인,<br><span style="color:var(--brand)">회계사</span>가 직접 세웁니다</h1>
+        <p data-reveal="" data-delay="180" style="font-size:clamp(17px,2.1vw,21px);color:#5A6B85;margin:22px auto 0;line-height:1.72;max-width:640px">자본금·지분·절세 구조까지 함께 설계하는 법인설립 무료지원. 첫 해 기장 시 설립 수수료는 0원입니다.</p>
+        <div data-reveal="" data-delay="270" style="display:flex;gap:12px;justify-content:center;margin-top:34px;flex-wrap:wrap">
+          <a href="#apply" style="display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;padding:18px 40px;border-radius:14px;position:relative;overflow:hidden;background:var(--brand);color:#fff;box-shadow:0 16px 34px rgba(43,110,246,.34);transition:transform .18s,background .18s" style-hover="transform:translateY(-3px);background:var(--brand-d)" style-before="content:'';position:absolute;top:0;left:0;width:65%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 45%,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,transparent);animation:shine 2.8s ease-in-out infinite;pointer-events:none">1분 무료 상담 신청</a>
+          <a href="tel:01096910177" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:18px;padding:18px 34px;border-radius:14px;background:#fff;color:#10233F;border:1.5px solid #D6E1F2;transition:transform .18s,border-color .18s" style-hover="border-color:var(--brand);color:var(--brand);transform:translateY(-3px)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg>전화 상담</a>
+        </div>
+      </div>
+      <div data-reveal="" data-delay="120" style="margin-top:52px;background:#fff;border:1px solid #E5EDF8;border-radius:20px;box-shadow:0 16px 44px rgba(20,50,110,.08);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));overflow:hidden">
+        <div style="padding:30px 16px;text-align:center;border-right:1px solid #EEF3FA"><div style="font-size:clamp(28px,3.6vw,40px);font-weight:900;color:var(--brand);letter-spacing:-.02em">0원</div><div style="font-size:14px;color:#5A6B85;font-weight:600;margin-top:6px">설립 수수료</div></div>
+        <div style="padding:30px 16px;text-align:center;border-right:1px solid #EEF3FA"><div style="font-size:clamp(28px,3.6vw,40px);font-weight:900;color:var(--brand);letter-spacing:-.02em">원스톱</div><div style="font-size:14px;color:#5A6B85;font-weight:600;margin-top:6px">설립·세무 지원</div></div>
+        <div style="padding:30px 16px;text-align:center;border-right:1px solid #EEF3FA"><div style="font-size:clamp(28px,3.6vw,40px);font-weight:900;color:var(--brand);letter-spacing:-.02em">3~5일</div><div style="font-size:14px;color:#5A6B85;font-weight:600;margin-top:6px">평균 설립 소요</div></div>
+        <div style="padding:30px 16px;text-align:center"><div style="font-size:clamp(28px,3.6vw,40px);font-weight:900;color:var(--brand);letter-spacing:-.02em">전국</div><div style="font-size:14px;color:#5A6B85;font-weight:600;margin-top:6px">비대면 상담 가능</div></div>
+      </div>
+    </sc-if>
+
+    <a href="#services" aria-label="아래로" style="position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:3;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:var(--brand);background:rgba(255,255,255,.7);box-shadow:0 6px 18px rgba(43,110,246,.2);animation:bounceY 1.8s ease-in-out infinite"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 9l6 6 6-6"></path></svg></a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div style="background:linear-gradient(90deg,var(--brand),#1D5AE0,var(--sky),#1D5AE0,var(--brand));background-size:300% 100%;animation:gradientShift 18s linear infinite;overflow:hidden;padding:18px 0" aria-hidden="true">
+  <div style="display:flex;width:max-content;white-space:nowrap;animation:scrollx 44s linear infinite">
+    <div style="display:flex;align-items:center;gap:32px;padding-right:32px">
+      <b style="color:#fff;font-weight:800;font-size:19px">무료 법인설립</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">세무기장</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">절세 구조 설계</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">정부지원금 진단</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">개인 → 법인 전환</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">정책자금</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">R&amp;D 세액공제</b><span style="color:#BFD6FF;font-size:16px">◆</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:32px;padding-right:32px">
+      <b style="color:#fff;font-weight:800;font-size:19px">무료 법인설립</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">세무기장</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">절세 구조 설계</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">정부지원금 진단</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">개인 → 법인 전환</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">정책자금</b><span style="color:#BFD6FF;font-size:16px">◆</span><b style="color:#fff;font-weight:800;font-size:19px">R&amp;D 세액공제</b><span style="color:#BFD6FF;font-size:16px">◆</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="padding:112px 0;background:#F5F8FF">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">비욘드의 법률·세무·회계를 포괄하는 ONE-STOP 서비스</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F">설립부터 절세까지, <span style="color:var(--brand)">비욘드 법인무료설립센터가 다 합니다</span></h2>
+    <p data-reveal="" data-delay="180" style="font-size:clamp(17px,2vw,20px);color:#5A6B85;margin:16px auto 0;line-height:1.7;max-width:640px">회사의 시작과 성장, 회계사가 끝까지 책임집니다.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:52px;text-align:left">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+        <div data-reveal="" data-svc="" style="background:#fff;border:1px solid #E5EDF8;border-radius:22px;padding:34px 28px;position:relative;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .25s,background .3s" style-hover="transform:translateY(-8px);box-shadow:0 24px 56px rgba(43,110,246,.24);border-color:var(--brand);background:linear-gradient(165deg,#fff,#EDF3FF)">
+          <span style="position:absolute;top:26px;right:26px;font-size:12px;font-weight:800;padding:5px 12px;border-radius:100px;background:{{ s.bg }};color:{{ s.bc }}">{{ s.b }}</span>
+          <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#E6F0FF,#fff);border:1px solid #E0EAFB;display:grid;place-items:center;margin-bottom:20px;animation:floaty 4.5s ease-in-out infinite"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ s.icon }}"></path></svg></div>
+          <h3 style="font-size:21px;font-weight:800;letter-spacing:-.02em;color:#10233F">{{ s.t }}</h3>
+          <p style="font-size:16px;color:#5A6B85;margin-top:10px;line-height:1.66">{{ s.d }}</p><div data-more="" style="font-size:14.5px;color:var(--brand-d);line-height:1.62;border-top:1px dashed #D6E1F2">{{ s.more }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- REVERSE MARQUEE (업무) -->
+<div style="background:#EEF4FF;border-top:1px solid #E1EAF8;border-bottom:1px solid #E1EAF8;overflow:hidden;padding:15px 0" aria-hidden="true">
+  <div style="display:flex;width:max-content;white-space:nowrap;animation:scrollx 48s linear infinite reverse">
+    <div style="display:flex;align-items:center;gap:26px;padding-right:26px">
+      <b style="color:var(--brand-d);font-weight:800;font-size:16px">세무조정</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">부가가치세 신고</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">원천세·4대보험</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">법인세 신고</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">연말정산</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">세금계산서·지출증빙</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">결산·재무제표</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">자금·정책자금 관리</b><span style="color:#9DB6E4">·</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:26px;padding-right:26px">
+      <b style="color:var(--brand-d);font-weight:800;font-size:16px">세무조정</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">부가가치세 신고</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">원천세·4대보험</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">법인세 신고</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">연말정산</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">세금계산서·지출증빙</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">결산·재무제표</b><span style="color:#9DB6E4">·</span><b style="color:var(--brand-d);font-weight:800;font-size:16px">자금·정책자금 관리</b><span style="color:#9DB6E4">·</span>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<section id="compare" style="padding:112px 0 44px">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">WHY BEYOND · 왜 회계사와 함께해야 할까요?</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F">'단순 설립 대행'과 <span style="color: var(--brand);">'회계사와 함께하는 설립'</span>은 확실히 다릅니다</h2>
+    <p data-reveal="" data-delay="180" style="font-size:clamp(17px,2vw,20px);color:#5A6B85;margin:16px auto 0;max-width:600px">회계사가 함께 해야만 법률과 세무, 회계 모두를 동시에 잡을 수 있습니다.</p>
+    <div style="max-width:920px;margin:48px auto 0">
+      <div data-ctable="" style="display:grid;grid-template-columns:1.3fr 1fr 1fr;background:#fff;border:1px solid #E5EDF8;border-radius:22px;overflow:hidden;box-shadow:0 2px 12px rgba(13,24,38,.05)">
+        <div style="padding:20px 22px;border-bottom:2px solid #D2DEEF;background:#F5F8FF"></div>
+        <div style="padding:20px 22px;border-bottom:2px solid #D2DEEF;background:#F5F8FF;font-weight:800;font-size:16px;color:#26364E;display:flex;align-items:center;justify-content:center;text-align:center">일반 설립대행</div>
+        <div style="padding:20px 22px;border-bottom:2px solid var(--brand-d);background:var(--brand);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center">회계사 설립 지원<span style="font-size: 11px; background: rgb(255, 255, 255); color: var(--brand); font-weight: 800; padding: 2px 8px; border-radius: 100px;">추천</span></div>
+        <sc-for list="{{ compareRows }}" as="r" hint-placeholder-count="6">
+          <div data-reveal="" data-delay="{{ r.dl }}" style="padding:19px 22px;border-bottom:1px solid #EEF3FA;font-weight:700;color:#26364E;background:#FBFCFE;display:flex;align-items:center;font-size:16px">{{ r.l }}</div>
+          <div data-reveal="" data-delay="{{ r.dl2 }}" style="padding:19px 22px;border-bottom:1px solid #EEF3FA;display:flex;align-items:center;justify-content:center;color:#93A2BC;font-weight:600;font-size:16px">{{ r.g }}</div>
+          <div data-reveal="" data-delay="{{ r.dl3 }}" style="padding:19px 22px;border-bottom:1px solid #EEF3FA;display:flex;align-items:center;justify-content:center;background:#F3F8FF;color:var(--brand-d);font-weight:800;font-size:16px">{{ r.m }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="" style="max-width:640px;margin:64px auto 0;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <span style="width:2px;height:40px;background:linear-gradient(180deg,var(--brand),transparent)"></span>
+      <h3 style="font-size:clamp(23px,3.2vw,33px);font-weight:800;letter-spacing:-.025em;color:#10233F;text-align:center;line-height:1.3">그래서, <span style="color:var(--brand)">회계사와 함께하면</span> 이렇게 다릅니다</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:22px;margin-top:36px;text-align:left">
+      <sc-for list="{{ whys }}" as="w" hint-placeholder-count="4">
+        <div data-reveal="" style="background:#fff;border:1px solid #E5EDF8;border-radius:22px;padding:36px;display:flex;gap:20px;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .25s,background .3s" style-hover="transform:translateY(-6px);box-shadow:0 24px 56px rgba(43,110,246,.22);border-color:var(--brand);background:linear-gradient(165deg,#fff,#EDF3FF)">
+          <div style="font-size:16px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--brand),var(--sky));width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 18px rgba(43,110,246,.3);animation:floaty 5s ease-in-out infinite">{{ w.n }}</div>
+          <div><h3 style="font-size:21px;font-weight:800;letter-spacing:-.015em;color:#10233F">{{ w.t }}</h3><p style="font-size:16px;color:#5A6B85;margin-top:10px;line-height:1.66">{{ w.d }}</p></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FREE / VALUE -->
+<section id="free" style="padding:112px 0;background:#F5F8FF">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px">
+    <div style="text-align:center">
+      <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">설립비용</span>
+      <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F"><span style="color: var(--brand);">설립비용은 0원</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:44px;align-items:center;margin-top:52px">
+      <div data-reveal="">
+        <h3 style="font-size:clamp(23px,3vw,31px);font-weight:800;letter-spacing:-.02em;line-height:1.34;color:#10233F">비욘드 법인무료설립센터는 법인 설립부터 세무까지<br>one-stop 서비스를 제공합니다.</h3>
+        <p style="color:#5A6B85;margin-top:16px;font-size:17px;line-height:1.76">저희 목표는 대표님에게 필요한 세무기장 서비스를 함께 제공합니다. <br>세무는 정관 등 내부 규정 정비가 기본이 되어야 합니다.</p>
+        <div style="margin-top:22px;background:#EAF1FC;border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:19px 22px;font-size:16px;color:#26364E;line-height:1.72">고객과는 오래 함께할 관계라&nbsp;<b style="color: var(--brand-d);">처음부터 제대로</b> 설계해 드립니다. <br>(참고) 등록면허세 등 공과금·실비 등 세금은 회사 부담입니다.</div>
+      </div>
+      <div data-reveal="" data-delay="120" data-zoom="" style="background:#fff;border:1px solid #E5EDF8;border-radius:24px;box-shadow:0 16px 48px rgba(20,50,110,.11);overflow:hidden">
+        <div style="background:linear-gradient(120deg,var(--brand),var(--sky));color:#fff;padding:22px 28px;font-weight:800;font-size:19px;display:flex;justify-content:space-between;align-items:center">설립 패키지<span style="font-size:13px;color:#dbe7ff;font-weight:600">전부 0원 지원</span></div>
+        <sc-for list="{{ valueItems }}" as="v" hint-placeholder-count="6">
+          <div data-reveal="" data-delay="{{ v.dl }}" style="display:flex;align-items:center;gap:13px;padding:16px 28px;border-bottom:1px solid #EEF3FA">
+            <span style="width:25px;height:25px;border-radius:7px;background:#E4F7EC;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#16A44B" stroke-width="2.6"><path d="M20 6L9 17l-5-5"></path></svg></span>
+            <span style="flex:1;font-size:17px;font-weight:600;color:#26364E">{{ v.n }}<sc-if value="{{ v.tag }}" hint-placeholder-val=""><em style="font-style:normal;font-size:11px;font-weight:800;color:var(--brand);background:#E6F0FF;padding:2px 7px;border-radius:6px;margin-left:6px">{{ v.tag }}</em></sc-if></span>
+            <span style="font-size:18px;color:#93A2BC;text-decoration:line-through;font-weight:700">{{ v.p }}</span>
+          </div>
+        </sc-for>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:23px 28px;background:#F5F8FF">
+          <span style="font-weight:800;font-size:16.5px;color:#10233F">합계</span>
+          <span style="font-size:clamp(32px,4.6vw,46px);font-weight:900;letter-spacing:-.02em"><s style="color:#93A2BC;font-size:20px;font-weight:700;margin-right:10px">1,365,000원</s><b style="color:var(--brand)">0원</b></span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:42px"><a href="#apply" data-reveal="" style="display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;padding:18px 40px;border-radius:14px;background:var(--brand);color:#fff;box-shadow:0 16px 34px rgba(43,110,246,.34);transition:transform .18s,background .18s" style-hover="transform:translateY(-3px);background:var(--brand-d)">내 조건으로 무료 견적받기</a></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="padding:112px 0">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">진행 방법</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F">상담 한 번이면, <span style="color:var(--brand)">나머지는 비욘드 법인무료설립센터가</span></h2>
+    <p data-reveal="" data-delay="180" style="font-size:clamp(17px,2vw,20px);color:#5A6B85;margin:16px auto 0;max-width:600px">대표님이 직접 등기소 갈 일도, 서류 들고 뛸 일도 없습니다.</p>
+    <div data-flow="" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:0;margin-top:56px">
+      <sc-for list="{{ steps }}" as="p" hint-placeholder-count="4">
+        <div data-step="" data-reveal="" data-delay="{{ p.dl }}" style="position:relative;flex:1 1 190px;max-width:250px;text-align:center;padding:0 8px">
+          <div style="width:76px;height:76px;margin:0 auto;border-radius:22px;background:linear-gradient(135deg,var(--brand),var(--sky));display:grid;place-items:center;box-shadow:0 14px 30px rgba(43,110,246,.34);position:relative;z-index:2"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.icon }}"></path></svg></div>
+          <div style="margin-top:10px;font-size:12px;font-weight:900;color:var(--brand);letter-spacing:.1em">STEP {{ p.no }}</div>
+          <h3 style="font-size:19px;font-weight:800;margin-top:5px;color:#10233F">{{ p.t }}</h3>
+          <p style="font-size:16px;color:#3A4A63;margin-top:9px;line-height:1.66;font-weight:500">{{ p.d }}</p>
+          <div data-arw="" style="position:absolute;top:26px;right:-13px;color:#C9DBFF;z-index:1;animation:nudge 1.5s ease-in-out infinite"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+        </div>
+      </sc-for>
+    </div>
+    <p data-reveal="" data-delay="180" style="margin-top:32px;font-size:17px;color:#5A6B85">전자등기 기준 <b style="color:var(--brand);font-weight:800">7일 내</b>면 법인 완성.</p>
+  </div>
+</section>
+
+<!-- PROFILE / CENTER -->
+<section id="profile" style="padding:112px 0;background:#F5F8FF">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px">
+    <div style="text-align:center">
+      <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">센터 안내</span>
+      <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F">설립 그 다음, <span style="color:var(--brand)">세무 파트너</span>까지</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px;align-items:center;margin-top:52px">
+      <div data-reveal="" data-zoom="" style="position:relative;aspect-ratio:16/10;border-radius:24px;box-shadow:0 16px 48px rgba(20,50,110,.14);border:6px solid #fff;overflow:hidden;background:linear-gradient(135deg,#E6EEFF,#F3F8FF)">
+        <img src="assets/consult.jpg" alt="비욘드 세무사 상담 장면" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;animation:kenburns 20s ease-in-out infinite alternate" onerror="this.style.display='none'">
+        <div style="position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:8px;background:rgba(10,22,38,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border-radius:100px;padding:8px 14px"><span style="width:8px;height:8px;border-radius:50%;background:#16A44B;animation:pulse 2s infinite;flex-shrink:0"></span><b style="color:#fff;font-size:13px;font-weight:700">전문 세무사 1:1 상담</b></div>
+      </div>
+      <div data-reveal="" data-delay="120">
+        <div style="font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.02em;color:#10233F">법인설립 무료지원 + 세무 파트너</div>
+        <a href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;color:var(--brand);font-weight:800;font-size:16.5px;margin-top:6px" style-hover="text-decoration:underline">세무·회계 파트너 · 비욘드택스<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+        <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:20px">
+          <span style="background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:9px 16px;font-size:14.5px;font-weight:700;color:#26364E;box-shadow:0 2px 10px rgba(13,24,38,.05)">무료 법인설립</span>
+          <span style="background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:9px 16px;font-size:14.5px;font-weight:700;color:#26364E;box-shadow:0 2px 10px rgba(13,24,38,.05)">절세형 정관 설계</span>
+          <span style="background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:9px 16px;font-size:14.5px;font-weight:700;color:#26364E;box-shadow:0 2px 10px rgba(13,24,38,.05)">세무기장·조정</span>
+          <span style="background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:9px 16px;font-size:14.5px;font-weight:700;color:#26364E;box-shadow:0 2px 10px rgba(13,24,38,.05)">정부지원금 연계</span>
+          <span style="background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:9px 16px;font-size:14.5px;font-weight:700;color:#26364E;box-shadow:0 2px 10px rgba(13,24,38,.05)">개인→법인 전환</span>
+        </div>
+        <p style="margin-top:22px;font-size:18px;color:#26364E;line-height:1.76;font-weight:500">비욘드택스가 설립부터 세무기장·절세까지 한 팀으로 이어 맡아, 대표님이 사업에만 집중하실 수 있게 합니다.</p>
+        <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
+          <a href="#apply" style="display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;padding:14px 26px;border-radius:12px;background:var(--brand);color:#fff;box-shadow:0 12px 26px rgba(43,110,246,.28);transition:transform .18s,background .18s" style-hover="transform:translateY(-2px);background:var(--brand-d)">무료 상담 신청</a>
+          <a href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;justify-content:center;font-weight:700;font-size:16px;padding:14px 24px;border-radius:12px;background:#fff;color:#10233F;border:1.5px solid #D6E1F2;transition:border-color .18s,color .18s" style-hover="border-color:var(--brand);color:var(--brand)">비욘드택스 홈페이지<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="" data-delay="120" style="margin-top:52px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="font-size:14px;font-weight:800;letter-spacing:.04em;color:var(--brand)">비욘드 법인무료설립센터(비욘드택스) 사무실 전경</span><span style="flex:1;height:1px;background:#E5EDF8"></span></div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:clamp(320px,42vw,440px)">
+        <div style="grid-row:span 2;position:relative;border-radius:20px;overflow:hidden;box-shadow:0 12px 36px rgba(20,50,110,.12)">
+          <img src="assets/office-3.jpg" alt="비욘드 오픈 오피스" loading="lazy" style="width:100%;height:100%;object-fit:cover;animation:kenburns 19s ease-in-out infinite alternate">
+        </div>
+        <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 12px 36px rgba(20,50,110,.12)">
+          <img src="assets/office-1.jpg" alt="강뷰 개인 상담실" loading="lazy" style="width:100%;height:100%;object-fit:cover;animation:kenburns 23s ease-in-out infinite alternate">
+        </div>
+        <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 12px 36px rgba(20,50,110,.12)">
+          <img src="assets/office-2.jpg" alt="응접 라운지" loading="lazy" style="width:100%;height:100%;object-fit:cover;animation:kenburns 26s ease-in-out infinite alternate">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIELD SHOWCASE -->
+<section style="position:relative;overflow:hidden;padding:112px 0;background:#0A1626">
+  <div style="position:absolute;top:-120px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(43,110,246,.35),transparent 68%);animation:drift1 20s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:absolute;bottom:-140px;left:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(91,156,255,.22),transparent 68%);animation:drift2 24s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:#cfe0ff;background:rgba(255,255,255,.14);padding:8px 16px;border-radius:100px;margin-bottom:18px">FIELD</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#fff">설립부터 세무까지, <span style="color:#7FB0FF">한 팀이 움직입니다</span></h2>
+    <p data-reveal="" data-delay="180" style="font-size:clamp(17px,2vw,20px);color:#c9dbff;margin:16px auto 0;max-width:620px">상담 → 설계 → 등기 → 세무. 각 단계를 다른 회사에 넘기지 않고, 비욘드 법인무료설립센터 안에서 끊김 없이 이어갑니다.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:48px">
+      <div data-reveal="" style="position:relative;aspect-ratio:4/3.3;border-radius:20px;overflow:hidden;box-shadow:0 22px 54px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)">
+        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt="상담·설계" loading="lazy" style="width:100%;height:100%;object-fit:cover;animation:kenburns 18s ease-in-out infinite alternate" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(6,14,26,.86));pointer-events:none"></div>
+        <div style="position:absolute;left:20px;right:20px;bottom:18px;text-align:left;display:flex;align-items:center;gap:10px">
+          <span style="width:9px;height:9px;border-radius:50%;background:#16A44B;box-shadow:0 0 0 4px rgba(22,164,75,.25);animation:pulse 2s infinite;flex-shrink:0"></span>
+          <div><b style="display:block;color:#fff;font-size:17px;font-weight:800">상담 · 구조 설계</b><span style="color:#b9c9e4;font-size:13.5px">자본금·지분·정관을 절세까지</span></div>
+        </div>
+      </div>
+      <div data-reveal="" data-delay="120" style="position:relative;aspect-ratio:4/3.3;border-radius:20px;overflow:hidden;box-shadow:0 22px 54px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt="등기·등록" loading="lazy" style="width:100%;height:100%;object-fit:cover;animation:kenburns 22s ease-in-out infinite alternate-reverse" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(6,14,26,.86));pointer-events:none"></div>
+        <div style="position:absolute;left:20px;right:20px;bottom:18px;text-align:left;display:flex;align-items:center;gap:10px">
+          <span style="width:9px;height:9px;border-radius:50%;background:#16A44B;box-shadow:0 0 0 4px rgba(22,164,75,.25);animation:pulse 2s infinite .6s;flex-shrink:0"></span>
+          <div><b style="display:block;color:#fff;font-size:17px;font-weight:800">전자등기 · 사업자등록</b><span style="color:#b9c9e4;font-size:13.5px">제휴 법무사가 원스톱 처리</span></div>
+        </div>
+      </div>
+      <div data-reveal="" data-delay="240" style="position:relative;aspect-ratio:4/3.3;border-radius:20px;overflow:hidden;box-shadow:0 22px 54px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt="세무기장·절세" loading="lazy" style="width:100%;height:100%;object-fit:cover;animation:kenburns 20s ease-in-out infinite alternate" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(6,14,26,.86));pointer-events:none"></div>
+        <div style="position:absolute;left:20px;right:20px;bottom:18px;text-align:left;display:flex;align-items:center;gap:10px">
+          <span style="width:9px;height:9px;border-radius:50%;background:#16A44B;box-shadow:0 0 0 4px rgba(22,164,75,.25);animation:pulse 2s infinite 1.2s;flex-shrink:0"></span>
+          <div><b style="display:block;color:#fff;font-size:17px;font-weight:800">세무기장 · 절세 관리</b><span style="color:#b9c9e4;font-size:13.5px">회계사가 매달 직접 점검</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="padding:112px 0;background:#F5F8FF">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">REVIEWS</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F">먼저 시작한 <span style="color:var(--brand)">대표님들의 이야기</span></h2>
+    <p data-reveal="" data-delay="180" style="font-size:14.5px;color:#93A2BC;margin:16px auto 0">※ 아래는 예시 후기입니다. 실제 후기로 교체하세요.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:44px;text-align:left">
+      <sc-for list="{{ reviews }}" as="rv" hint-placeholder-count="3">
+        <div data-reveal="" style="background:#fff;border:1px solid #E5EDF8;border-radius:22px;padding:32px;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .25s,background .3s" style-hover="transform:translateY(-6px);box-shadow:0 24px 56px rgba(43,110,246,.2);border-color:var(--brand);background:linear-gradient(165deg,#fff,#EDF3FF)">
+          <div style="display:flex;gap:2px;margin-bottom:15px">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="#F5A623"><path d="M12 2l3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 18l-6.6 3.7 1.8-7.3L1.5 9.5 9 8.9z"></path></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="#F5A623"><path d="M12 2l3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 18l-6.6 3.7 1.8-7.3L1.5 9.5 9 8.9z"></path></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="#F5A623"><path d="M12 2l3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 18l-6.6 3.7 1.8-7.3L1.5 9.5 9 8.9z"></path></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="#F5A623"><path d="M12 2l3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 18l-6.6 3.7 1.8-7.3L1.5 9.5 9 8.9z"></path></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="#F5A623"><path d="M12 2l3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 18l-6.6 3.7 1.8-7.3L1.5 9.5 9 8.9z"></path></svg>
+          </div>
+          <p style="font-size:16.5px;color:#26364E;line-height:1.74;font-weight:500">{{ rv.q }}</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:19px;border-top:1px solid #EEF3FA">
+            <span style="width:50px;height:50px;border-radius:50%;flex-shrink:0;background:{{ rv.av }};display:grid;place-items:center;font-weight:800;font-size:19px;color:{{ rv.ac }}">{{ rv.ini }}</span>
+            <div><b style="display:block;font-size:16px;font-weight:800;color:#10233F">{{ rv.n }}</b><span style="font-size:14px;color:#93A2BC">{{ rv.m }}</span></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- GROWTH -->
+<section style="padding:112px 0">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">GROWTH PARTNER</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F">설립은 시작일 뿐, <span style="color:var(--brand)">그 뒤가 진짜</span></h2>
+    <p data-reveal="" data-delay="180" style="font-size:clamp(17px,2vw,20px);color:#5A6B85;margin:16px auto 0;max-width:600px">회사가 커질수록 챙길 게 늘어납니다. 그때마다 비욘드 법인무료설립센터가 옆에 있습니다.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:44px;justify-content:center">
+      <sc-for list="{{ pills }}" as="pl" hint-placeholder-count="7">
+        <span data-reveal="" style="display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #E5EDF8;border-radius:100px;padding:15px 25px;font-weight:700;font-size:16.5px;color:#26364E;box-shadow:0 2px 12px rgba(13,24,38,.05);transition:transform .2s,border-color .2s" style-hover="transform:translateY(-4px);border-color:var(--brand)"><span style="width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--sky))"></span>{{ pl }}</span>
+      </sc-for>
+    </div>
+    <div data-reveal="" data-delay="120" style="margin-top:50px;background:linear-gradient(120deg,var(--brand),var(--sky),#1D5AE0,var(--brand));background-size:280% 280%;animation:gradientShift 14s ease infinite;border-radius:24px;padding:48px;text-align:center;color:#fff;box-shadow:0 18px 44px rgba(36,91,240,.3);position:relative;overflow:hidden">
+      <div style="position:absolute;top:-80px;right:-40px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.1);z-index:1"></div>
+      <div style="position:absolute;bottom:-70px;left:-50px;width:220px;height:220px;border-radius:50%;border:2px dashed rgba(255,255,255,.3);animation:spinSlow 26s linear infinite;pointer-events:none"></div>
+      <h3 style="font-size:clamp(23px,2.9vw,30px);font-weight:800;letter-spacing:-.02em;position:relative;z-index:2">창업 초기에만 잡을 수 있는 세제 혜택이 있습니다</h3>
+      <p style="color:#e0ebff;margin-top:13px;font-size:17px;position:relative;z-index:2">창업중소기업 세액감면은 최대 5년간 법인세를 크게 줄여줍니다. 설립 때 놓치면 되돌리기 어렵습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS (video band) -->
+<section style="position:relative;overflow:hidden;padding:112px 0">
+  <video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none"><source src="assets/stats-bg.mp4" type="video/mp4"></video>
+  <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(10,22,38,.88),rgba(29,72,204,.66));z-index:1;pointer-events:none"></div>
+  <div style="position:absolute;top:-90px;right:-60px;width:300px;height:300px;border-radius:50%;border:2px dashed rgba(255,255,255,.18);animation:spinSlow 30s linear infinite;z-index:1;pointer-events:none"></div>
+  <div style="position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:#cfe0ff;background:rgba(255,255,255,.14);padding:8px 16px;border-radius:100px;margin-bottom:18px">TRUST</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#fff">숫자로 증명하는 <span style="color:#8FB6FF">비욘드 법인무료설립센터</span></h2>
+    <p data-reveal="" data-delay="180" style="font-size:14.5px;color:#c9dbff;margin:16px auto 0">※ 아래 수치는 예시입니다. 실제 실적으로 교체하세요.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:44px">
+      <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+        <div data-reveal="" style="text-align:center;padding:38px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .25s,background .25s" style-hover="transform:translateY(-6px);background:rgba(255,255,255,.14)">
+          <div data-count="{{ st.c }}" data-suffix="{{ st.s }}" style="font-size:clamp(33px,4.4vw,47px);font-weight:900;letter-spacing:-.03em;color:#fff">0</div>
+          <div style="font-size:15px;color:#cfe0ff;margin-top:8px;font-weight:600">{{ st.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding:112px 0">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;text-align:center">
+    <span data-reveal="" style="display:inline-block;font-size:19px;font-weight:800;letter-spacing:.04em;color:var(--brand);background:#E6F0FF;padding:8px 16px;border-radius:100px;margin-bottom:18px">FAQ</span>
+    <h2 data-reveal="" data-delay="90" style="font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.24;color:#10233F">궁금한 점, <span style="color:var(--brand)">먼저 답해드릴게요</span></h2>
+    <div style="max-width:820px;margin:44px auto 0;text-align:left">
+      <sc-for list="{{ faqs }}" as="fq" hint-placeholder-count="6">
+        <details data-reveal="" style="background:#fff;border:1px solid #E5EDF8;border-radius:15px;margin-bottom:13px;overflow:hidden">
+          <summary style="list-style:none;cursor:pointer;padding:24px 26px;font-weight:700;font-size:17.5px;color:#10233F;display:flex;justify-content:space-between;align-items:center;gap:16px">{{ fq.q }}<span style="flex-shrink:0;font-size:22px;color:var(--brand);font-weight:400;line-height:1">+</span></summary>
+          <div style="padding:0 26px 25px;color:#5A6B85;font-size:16px;line-height:1.74">{{ fq.a }}</div>
+        </details>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="apply" style="padding:112px 0;background:#141A26;position:relative;overflow:hidden">
+  <video autoplay="" muted="" loop="" playsinline="" preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.7;pointer-events:none"><source src="assets/growth-bg.mp4" type="video/mp4"></video>
+  <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,rgba(10,16,28,.58),rgba(16,24,40,.46));pointer-events:none"></div>
+  <div style="position:absolute;top:-140px;left:-100px;width:460px;height:460px;border-radius:50%;background:rgba(255,255,255,.08);animation:drift1 22s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:absolute;bottom:-160px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06);animation:drift2 26s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:52px;align-items:center">
+    <div>
+      <h2 data-reveal="" style="color:#fff;font-size:clamp(29px,4vw,44px);font-weight:900;letter-spacing:-.025em;line-height:1.24">1분이면 충분합니다<br>지금 상담 신청하세요</h2>
+      <p data-reveal="" data-delay="90" style="color:#dbe7ff;margin-top:18px;font-size:18px;line-height:1.7">상담은 무료, 부담은 없습니다. 남겨주시면 회계사가 직접 연락드립니다.</p>
+      <div style="margin-top:30px;display:flex;flex-direction:column;gap:12px">
+        <a data-reveal="" href="http://pf.kakao.com/_hFjcG/chat" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:16px 18px;color:#fff;font-weight:700;transition:background .16s,transform .16s" style-hover="background:rgba(255,255,255,.2);transform:translateX(5px)">
+          <span style="width:42px;height:42px;border-radius:11px;background:#FEE500;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="21" height="21" fill="#3A1D1D"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"></path></svg></span>
+          <div><b style="font-size:16.5px">카카오톡 상담</b><small style="display:block;color:#c9dbff;font-weight:500;font-size:13px">가장 빠른 채널 · 채널 연결 필요</small></div>
+        </a>
+        <a data-reveal="" data-delay="90" href="tel:01096910177" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:16px 18px;color:#fff;font-weight:700;transition:background .16s,transform .16s" style-hover="background:rgba(255,255,255,.2);transform:translateX(5px)">
+          <span style="width:42px;height:42px;border-radius:11px;background:#fff;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="var(--brand)" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg></span>
+          <div><b style="font-size:16.5px">전화 상담</b><small style="display:block;color:#c9dbff;font-weight:500;font-size:13px">010-9691-0177 · 평일 9~18시</small></div>
+        </a>
+        <a data-reveal="" data-delay="180" href="mailto:woody@beyondcpa.co.kr" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:16px 18px;color:#fff;font-weight:700;transition:background .16s,transform .16s" style-hover="background:rgba(255,255,255,.2);transform:translateX(5px)">
+          <span style="width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.25);display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path><path d="M22 6l-10 7L2 6"></path></svg></span>
+          <div><b style="font-size:16.5px">이메일 상담</b><small style="display:block;color:#c9dbff;font-weight:500;font-size:13px">woody@beyondcpa.co.kr</small></div>
+        </a>
+        <a data-reveal="" data-delay="240" href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:16px 18px;color:#fff;font-weight:700;transition:background .16s,transform .16s" style-hover="background:rgba(255,255,255,.2);transform:translateX(5px)">
+          <span style="width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.25);display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 0 1 0 20A15 15 0 0 1 12 2z"></path></svg></span>
+          <div><b style="font-size:16.5px">홈페이지</b><small style="display:block;color:#c9dbff;font-weight:500;font-size:13px">beyondcpa.co.kr</small></div>
+        </a>
+        <a data-reveal="" data-delay="300" href="https://blog.naver.com/beyondnumber" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:16px 18px;color:#fff;font-weight:700;transition:background .16s,transform .16s" style-hover="background:rgba(255,255,255,.2);transform:translateX(5px)">
+          <span style="width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.25);display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#fff" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1.5" fill="#fff" stroke="none"></circle></svg></span>
+          <div><b style="font-size:16.5px">블로그</b><small style="display:block;color:#c9dbff;font-weight:500;font-size:13px">법인설립 정보·후기 · 연결 필요</small></div>
+        </a>
+      </div>
+    </div>
+    <div id="finalFormBox" data-reveal="" data-delay="90" data-zoom="" style="background:#fff;border-radius:24px;padding:40px;box-shadow:0 30px 70px rgba(10,30,80,.35)">
+      <h3 style="font-size:24px;font-weight:800;letter-spacing:-.015em;color:#10233F">빠른 상담 신청</h3>
+      <p style="color:#5A6B85;font-size:15.5px;margin-top:6px">아래만 남겨주시면 회계사가 직접 연락드립니다.</p>
+      <div style="margin-top:16px"><label style="display:block;font-size:14.5px;font-weight:700;margin-bottom:7px;color:#26364E">대표자 성함 <span style="color:#DB3B3B">*</span></label><input id="f_name" type="text" placeholder="홍길동" style="width:100%;padding:15px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"></div>
+      <div style="margin-top:16px"><label style="display:block;font-size:14.5px;font-weight:700;margin-bottom:7px;color:#26364E">연락처 <span style="color:#DB3B3B">*</span></label><input id="f_tel" type="tel" placeholder="010-0000-0000" style="width:100%;padding:15px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"></div>
+      <div style="margin-top:16px"><label style="display:block;font-size:14.5px;font-weight:700;margin-bottom:7px;color:#26364E">업종 / 사업 내용 <span style="color:#93A2BC;font-weight:600">(선택)</span></label><input id="f_biz" type="text" placeholder="예: 온라인 쇼핑몰, IT 개발, 도소매 등" style="width:100%;padding:15px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"></div>
+      <div style="margin-top:16px"><label style="display:block;font-size:14.5px;font-weight:700;margin-bottom:7px;color:#26364E">희망 자본금 <span style="color:#93A2BC;font-weight:600">(선택)</span></label><select id="f_cap" style="width:100%;padding:15px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F;background:#fff" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"><option value="">선택</option><option>1,000만 원 이하</option><option>1,000만~5,000만 원</option><option>5,000만~1억 원</option><option>1억 원 이상 / 미정</option></select></div>
+      <div style="margin-top:16px"><label style="display:block;font-size:14.5px;font-weight:700;margin-bottom:7px;color:#26364E">설립 희망 시기 <span style="color:#93A2BC;font-weight:600">(선택)</span></label><select id="f_when" style="width:100%;padding:15px;border:1.5px solid #E5EDF8;border-radius:11px;font-size:16px;font-family:inherit;color:#10233F;background:#fff" style-focus="outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,110,246,.14)"><option value="">선택</option><option>가능한 빨리</option><option>1개월 이내</option><option>3개월 이내</option><option>아직 알아보는 중</option></select></div>
+      <label style="display:flex;align-items:flex-start;gap:9px;margin-top:18px;font-size:13px;color:#5A6B85;line-height:1.5;cursor:pointer"><input id="f_agree" type="checkbox" style="width:18px;height:18px;margin-top:1px;accent-color:var(--brand);flex-shrink:0"><span>개인정보 수집·이용에 동의합니다. <a href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="color:var(--brand);text-decoration:underline">개인정보처리방침</a> <span style="color:#DB3B3B">*</span></span></label>
+      <button onClick="{{ submitFinal }}" style="width:100%;margin-top:24px;font-weight:700;font-size:17px;padding:18px;border-radius:12px;border:none;cursor:pointer;position:relative;overflow:hidden;background:var(--brand);color:#fff;box-shadow:0 14px 30px rgba(43,110,246,.32);font-family:inherit;transition:transform .18s,background .18s" style-hover="transform:translateY(-2px);background:var(--brand-d)" style-before="content:'';position:absolute;top:0;left:0;width:65%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 45%,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,transparent);animation:shine 3s ease-in-out infinite;pointer-events:none">무료 상담 신청하기</button>
+      <p style="font-size:12px;color:#93A2BC;text-align:center;margin-top:13px;line-height:1.5">입력하신 정보는 상담 목적으로만 사용되며 안전하게 보관됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0A1626;color:#8ea4c4;padding:60px 0 42px;font-size:15px">
+  <div style="max-width:1160px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:#fff;margin-bottom:16px"><span style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--sky));display:grid;place-items:center;color:#fff;font-size:17px;font-weight:900">B</span>비욘드 법인무료설립센터</div>
+      <p style="line-height:1.78">법인설립·세무기장·절세를 원스톱으로 지원하는<br>무료 법인설립 지원센터</p>
+    </div>
+    <div>
+      <p style="color:#c3d2ec;font-weight:700;margin-bottom:6px">세무·회계 담당</p>
+      <p style="line-height:1.78">비욘드택스</p>
+      <p style="line-height:1.78">대표 010-9691-0177</p>
+      <p style="line-height:1.78">woody@beyondcpa.co.kr</p>
+      <p style="line-height:1.78"><a href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="color:#9fb6d8;text-decoration:underline">beyondcpa.co.kr</a></p>
+    </div>
+    <div>
+      <p style="color:#c3d2ec;font-weight:700;margin-bottom:6px">설립등기 담당</p>
+      <p style="line-height:1.78">제휴 법무사 · 변호사 사무소</p>
+      <p style="line-height:1.78">※ 상호·주소는 상담 시 안내</p>
+    </div>
+    <div>
+      <p style="color:#c3d2ec;font-weight:700;margin-bottom:6px">바로가기</p>
+      <p style="line-height:1.9"><a href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="color:#c3d2ec" style-hover="color:#fff">비욘드택스 홈페이지 →</a></p>
+      <p style="line-height:1.9"><a href="http://pf.kakao.com/_hFjcG/chat" target="_blank" rel="noopener" style="color:#c3d2ec" style-hover="color:#fff">카카오톡 채널 →</a></p>
+      <p style="line-height:1.9"><a href="https://blog.naver.com/beyondnumber" target="_blank" rel="noopener" style="color:#c3d2ec" style-hover="color:#fff">블로그 →</a></p>
+      <p style="line-height:1.9"><a href="#apply" style="color:#c3d2ec" style-hover="color:#fff">상담접수 →</a></p>
+    </div>
+  </div>
+  <div style="max-width:1160px;margin:34px auto 0;padding:24px 22px 0;border-top:1px solid rgba(255,255,255,.1);font-size:12.5px;color:#6f86a8;line-height:1.78">
+    법인설립 업무는 제휴 변호사(또는 법무사) 측에서 진행되고 있으며, 관련 수수료도 해당 전문가에게 지급되고 있습니다. 세무 상담·기장·컨설팅은 비욘드택스가 담당합니다.<br>
+    <a href="#" style="color:#9fb6d8;text-decoration:underline;margin-right:16px">서비스 이용약관</a><a href="#" style="color:#9fb6d8;text-decoration:underline;margin-right:16px">개인정보처리방침</a>
+    <span style="float:right">© 2026 비욘드 법인무료설립센터</span>
+  </div>
+</footer>
+
+<!-- floating quick-contact dock -->
+<div data-dock="" style="position:fixed;right:16px;bottom:26px;z-index:95;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+  <a href="http://pf.kakao.com/_hFjcG/chat" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:#FEE500;color:#3A1D1D;border-radius:100px;padding:11px 17px 11px 12px;font-weight:800;font-size:14px;box-shadow:0 12px 28px rgba(0,0,0,.18);animation:bob 3.4s ease-in-out infinite" style-hover="filter:brightness(.96)"><span style="width:27px;height:27px;border-radius:50%;background:#3A1D1D;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="15" height="15" fill="#FEE500"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.6.1 1.3.1 2 .1 5.5 0 10-3.6 10-8S17.5 3 12 3z"></path></svg></span>카톡 상담</a>
+  <a href="tel:01096910177" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#26364E;border:1px solid #E5EDF8;border-radius:100px;padding:11px 17px 11px 12px;font-weight:700;font-size:14px;box-shadow:0 12px 28px rgba(20,50,110,.14);transition:transform .15s,border-color .15s,color .15s" style-hover="transform:translateX(-3px);border-color:var(--brand);color:var(--brand)"><span style="width:27px;height:27px;border-radius:50%;background:#E6F0FF;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--brand)" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg></span>전화</a>
+  <a href="#apply" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#26364E;border:1px solid #E5EDF8;border-radius:100px;padding:11px 17px 11px 12px;font-weight:700;font-size:14px;box-shadow:0 12px 28px rgba(20,50,110,.14);transition:transform .15s,border-color .15s,color .15s" style-hover="transform:translateX(-3px);border-color:var(--brand);color:var(--brand)"><span style="width:27px;height:27px;border-radius:50%;background:#E6F0FF;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--brand)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>상담접수</a>
+  <a href="https://blog.naver.com/beyondnumber" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#26364E;border:1px solid #E5EDF8;border-radius:100px;padding:11px 17px 11px 12px;font-weight:700;font-size:14px;box-shadow:0 12px 28px rgba(20,50,110,.14);transition:transform .15s,border-color .15s,color .15s" style-hover="transform:translateX(-3px);border-color:var(--brand);color:var(--brand)"><span style="width:27px;height:27px;border-radius:50%;background:#E6F0FF;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--brand)" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1.3" fill="var(--brand)" stroke="none"></circle></svg></span>블로그</a>
+  <a href="https://www.beyondcpa.co.kr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#26364E;border:1px solid #E5EDF8;border-radius:100px;padding:11px 17px 11px 12px;font-weight:700;font-size:14px;box-shadow:0 12px 28px rgba(20,50,110,.14);transition:transform .15s,border-color .15s,color .15s" style-hover="transform:translateX(-3px);border-color:var(--brand);color:var(--brand)"><span style="width:27px;height:27px;border-radius:50%;background:#E6F0FF;display:grid;place-items:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--brand)" stroke-width="2"><path d="M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5"></path></svg></span>홈페이지</a>
+</div>
+
+<!-- cursor glow -->
+<div id="cursorGlow" data-dock="" style="position:fixed;top:0;left:-999px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(43,110,246,.14),transparent 70%);pointer-events:none;z-index:90;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s"></div>
+
+<!-- mobile CTA bar -->
+<div data-mcta="" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:96;background:#fff;border-top:1px solid #E5EDF8;padding:11px 14px;gap:10px;box-shadow:0 -6px 24px rgba(13,24,38,.12)">
+  <a href="tel:01096910177" style="flex:0 0 92px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;padding:16px;border-radius:12px;background:#0A1626;color:#fff">전화</a>
+  <a href="#apply" style="flex:1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;padding:16px;border-radius:12px;background:var(--brand);color:#fff">무료 상담 신청</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;split&quot;,&quot;form&quot;,&quot;trust&quot;],&quot;default&quot;:&quot;split&quot;,&quot;tsType&quot;:&quot;'split'|'form'|'trust'&quot;,&quot;section&quot;:&quot;히어로 옵션&quot;},&quot;primaryColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2B6EF6&quot;,&quot;options&quot;:[&quot;#2B6EF6&quot;,&quot;#1B74E4&quot;,&quot;#0E8A5F&quot;,&quot;#5B4BE0&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;브랜드&quot;}}">
+class Component extends DCLogic {
+  state = { mobileOpen: false };
+
+  renderVals() {
+    var self = this;
+    var v = this.props.heroVariant || 'split';
+    return {
+      isHeroA: v === 'split',
+      isHeroB: v === 'form',
+      isHeroC: v === 'trust',
+      mobileOpen: this.state.mobileOpen,
+      showToast: this.props.showToast !== false,
+      toggleMenu: function(){ self.setState(function(s){ return { mobileOpen: !s.mobileOpen }; }); },
+      closeMenu: function(){ self.setState({ mobileOpen: false }); },
+      submitHero: function(){ self.submit({ name:'h_name', tel:'h_tel', biz:'h_biz', cap:'', when:'h_when', agree:'h_agree', box:'heroFormBox' }); },
+      submitFinal: function(){ self.submit({ name:'f_name', tel:'f_tel', biz:'f_biz', cap:'f_cap', when:'f_when', agree:'f_agree', box:'finalFormBox' }); },
+      services: [
+        { b:'무료', bg:'#E4F7EC', bc:'#16A44B', icon:'M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01', t:'법인설립 & 사업자등록', d:'상호 검토부터 설립등기, 사업자등록까지 원스톱으로.', more:'대표님은 신청서에 서명만 하시면 됩니다. 등기소·세무서 방문 없이 전자로 처리됩니다.' },
+        { b:'무료', bg:'#E4F7EC', bc:'#16A44B', icon:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M9 13h6M9 17h4', t:'절세형 정관 설계', d:'나중에 덜 내는 절세형 정관으로 시작합니다.', more:'중간배당·이익소각·직무발명보상 조항까지 미리 담아, 설립 후 세금 부담을 크게 줄입니다.' },
+        { b:'핵심', bg:'#2B6EF6', bc:'#ffffff', icon:'M3 3v18h18M7 14l4-4 3 3 5-6', t:'세무기장 & 세무조정', d:'깔끔한 법인 세팅으로 놓치지 않는 절세 효과.', more:'부가세·원천세·법인세 신고와 세무조정까지. 절세 포인트를 그때그때 잡아드립니다.' },
+        { b:'무료상담', bg:'#FEF2DD', bc:'#C77E12', icon:'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', t:'정책자금 관리', d:'법인 기업신용등급 관리를 통해 정책자금 수혈 및 이자비용 감소 효과.', more:'법인 기업신용등급을 관리해 정책자금 수혈 가능성을 높이고, 대출 이자비용을 줄일 수 있도록 신청 타이밍까지 안내합니다.' },
+        { b:'무료', bg:'#E4F7EC', bc:'#16A44B', icon:'M4 17V9a1 1 0 0 1 1-1h4V4h6v4h4a1 1 0 0 1 1 1v8M4 17h16M4 17l-1 4h18l-1-4', t:'개인 → 법인 전환', d:'손해 없는 전환 시점을 계산해 드립니다.', more:'현물출자·포괄양수도 등 방법별로 양도세·부가세를 비교해 가장 유리한 전환을 설계합니다.' },
+        { b:'성장', bg:'#FEF2DD', bc:'#C77E12', icon:'M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 17l-5.5 2.5 1-6.3L3 8.9 9 8z', t:'절세 & 승계 컨설팅', d:'설립 후 법인 컨설팅까지 이어서 수행합니다.', more:'이익소각·가지급금·차등배당·정책자금·신용등급 관리, R&D 세액공제, 가업승계·매각까지.' }
+      ],
+      compareRows: [
+        { l:'설립등기 처리', g:'가능', m:'가능', dl:0, dl2:70, dl3:140 },
+        { l:'자본금·지분 구조 설계', g:'해당 없음', m:'회계사 직접', dl:150, dl2:220, dl3:290 },
+        { l:'절세 구조 검토', g:'해당 없음', m:'설립 전 반영', dl:300, dl2:370, dl3:440 },
+        { l:'설립 후 세무 관리', g:'외주 연결', m:'그대로 이어서', dl:450, dl2:520, dl3:590 },
+        { l:'법인 컨설팅 (이익소각·가지급금 등)', g:'해당 없음', m:'직접 수행', dl:600, dl2:670, dl3:740 },
+        { l:'담당', g:'상담원', m:'공인회계사 및 법무사(변호사)', dl:750, dl2:820, dl3:890 }
+      ],
+      valueItems: [
+        { n:'법인설립 대행', p:'495,000원', dl:0 },
+        { n:'절세형 정관·주주명부', p:'220,000원', dl:120 },
+        { n:'법인 인감·필수 서식', p:'80,000원', dl:240 },
+        { n:'사업자등록 신청', p:'120,000원', dl:360 },
+        { n:'설립 절세 컨설팅', tag:'센터 단독', p:'300,000원', dl:480 },
+        { n:'법인 신용등급 관리', tag:'센터 단독', p:'150,000원', dl:600 }
+      ],
+      steps: [
+        { no:'01', dl:0, icon:'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', t:'상담 신청', d:'전화·카톡으로 5분. 업종과 계획만 말씀해 주세요.' },
+        { no:'02', dl:120, icon:'M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z', t:'설립 설계', d:'회계사가 자본금·지분·정관을 절세까지 보고 잡습니다.' },
+        { no:'03', dl:240, icon:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M9 15l2 2 4-4', t:'등기·등록', d:'제휴 법무사가 전자등기로 설립, 사업자등록까지 마칩니다.' },
+        { no:'04', dl:360, icon:'M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3', t:'세무 세팅·개시', d:'세무기장까지 세팅 완료. 바로 사업을 시작하시면 됩니다.' }
+      ],
+      whys: [
+        { n:'01', t:'세금까지 보고 설계합니다', d:'등기만 하는 곳은 자본금·지분을 적힌 대로 넣습니다. 비욘드 법인무료설립센터는 향후 배당·증여·투자까지 계산해 구조를 잡습니다.' },
+        { n:'02', t:'기장이 본업입니다', d:'일반적인 법무사는 설립만 하고 기장은 외주로 넘깁니다. 비욘드택스는 기장이 본업이라 설립과 세무가 끊기지 않고 이어집니다.' },
+        { n:'03', t:'전화·비대면으로 간편하게', d:'전화·카카오톡·이메일로 어디서든 상담. 오피스에 오실 필요 없이 전 과정을 진행할 수 있습니다.' },
+        { n:'04', t:'성장까지 함께 갑니다', d:'정부보조금 정산, R&D 세액공제, 가업승계·매각 자문 실무를 갖춘 팀이 회사가 커질 때마다 옆에 있습니다.' }
+      ],
+      reviews: [
+        { q:'"다른 데선 자본금 얼마 넣을지도 안 물어봤는데, 여긴 나중에 투자받을 계획까지 물어보고 지분을 잡아줬어요. 이래서 회계사구나 싶었죠."', n:'김O현 대표', m:'IT 스타트업', ini:'김', av:'#E6F0FF', ac:'#2B6EF6' },
+        { q:'"개인에서 법인 전환하는 시점을 잘못 잡을 뻔했는데 딱 계산해서 몇 달 미루자고 하셨어요. 덕분에 세금 꽤 아꼈습니다."', n:'이O정 대표', m:'온라인 도소매', ini:'이', av:'#E4F7EC', ac:'#16A44B' },
+        { q:'"설립 공짜라 반신반의했는데 진짜 수수료가 안 나왔어요. 게다가 받을 수 있는 정부지원금까지 알려주셔서 기장 그대로 맡기고 있습니다."', n:'박O수 대표', m:'제조·도매', ini:'박', av:'#FDF0E1', ac:'#C77E12' }
+      ],
+      pills: ['법인세 절세 전략','정책자금','보조금 정산검증','R&D 세액공제','가지급금·이익소각','가업승계·M&A 자문'],
+      stats: [
+        { c:500, s:'+', l:'누적 설립·상담 지원' },
+        { c:12, s:'+', l:'무료 지원 업무 항목' },
+        { c:5, s:'영업일', l:'평균 설립 소요' },
+        { c:24, s:'H', l:'상담 회신' }
+      ],
+      faqs: [
+        { q:'정말 설립 수수료가 0원인가요?', a:'네. 첫 해 세무기장을 함께 시작하시는 조건으로 설립 대행 수수료를 비욘드 법인무료설립센터가 부담합니다. 다만 등록면허세·지방교육세 등 국가에 내는 공과금은 제도상 대표님 부담으로 별도입니다.' },
+        { q:'무료면 대충 해주는 것 아닌가요?', a:'오히려 반대입니다. 오래 함께할 세무 고객이기 때문에 처음부터 자본금·지분·정관을 절세까지 보고 설계합니다. 등기만 치고 끝내는 대행과는 결과물이 다릅니다.' },
+        { q:'매출이 거의 없어도 기장을 해야 하나요?', a:'법인은 매출과 무관하게 장부 작성·법인세 신고 의무가 있습니다. 초기라도 기장을 해두면 결손금 이월·세액공제로 나중에 돌려받습니다. 규모에 맞는 합리적 기장료로 안내드립니다.' },
+        { q:'집 주소로도 설립할 수 있나요?', a:'가능합니다. 다만 과밀억제권역 여부에 따라 취득세 중과 등 영향이 있어, 주소지별 세금 차이를 함께 검토한 뒤 정하시길 권합니다.' },
+        { q:'개인사업자인데 법인 전환도 되나요?', a:'네. 전환 시점과 방법(현물출자·포괄양수도 등)에 따라 양도세·부가세가 크게 갈립니다. 세금 손해가 가장 적은 방법을 회계사가 직접 계산해 드립니다.' },
+        { q:'등기는 누가 진행하나요?', a:'공인회계사는 등기를 대리할 수 없어, 설립등기는 제휴 법무사·변호사가 진행합니다. 비욘드 법인무료설립센터는 설립 설계와 세무·회계를 맡아 전 과정을 원스톱으로 조율합니다.' }
+      ]
+    };
+  }
+
+  submit(ids) {
+    var g = function(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    var name = g(ids.name), tel = g(ids.tel);
+    if (!name || !tel) { alert('성함과 연락처는 꼭 입력해주세요.'); return; }
+    var agreeEl = ids.agree ? document.getElementById(ids.agree) : null;
+    if (agreeEl && !agreeEl.checked) { alert('개인정보 수집·이용에 동의해 주세요.'); return; }
+    var biz = g(ids.biz), cap = ids.cap ? g(ids.cap) : '', when = g(ids.when);
+
+    var payload = {
+      _subject: '[상담신청] ' + name + ' 대표님',
+      _template: 'table',
+      '대표자': name,
+      '연락처': tel,
+      '업종/사업내용': biz || '-',
+      '희망 자본금': cap || '-',
+      '설립 희망시기': when || '-',
+      '개인정보 수집·이용 동의': '동의함'
+    };
+
+    var box = ids.box ? document.getElementById(ids.box) : null;
+    var okScreen = function(){
+      if (!box) { alert('정상 접수되었습니다. 담당 회계사가 곧 연락드리겠습니다.'); return; }
+      box.innerHTML = '<div style="text-align:center;padding:26px 8px 14px">'
+        + '<div style="width:74px;height:74px;border-radius:50%;background:#E4F7EC;display:grid;place-items:center;margin:0 auto 20px"><svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#16A44B" stroke-width="2.6"><path d="M20 6L9 17l-5-5"></path></svg></div>'
+        + '<h3 style="font-size:23px;font-weight:800;color:#10233F;letter-spacing:-.02em">정상 접수되었습니다</h3>'
+        + '<p style="color:#5A6B85;font-size:15.5px;margin-top:10px;line-height:1.7">담당 회계사가 영업일 기준 빠르게<br>연락드리겠습니다. 감사합니다.</p>'
+        + '<a href="tel:01096910177" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:22px;font-weight:700;font-size:16px;padding:14px 26px;border-radius:12px;background:#F5F8FF;color:#10233F;border:1.5px solid #D6E1F2">급하신가요? 010-9691-0177</a>'
+        + '</div>';
+    };
+
+    // FormSubmit(formsubmit.co)로 서버리스 전송 → 지정 메일로 표 형태 발송
+    fetch('https://formsubmit.co/ajax/woody@beyondcpa.co.kr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && (d.success === true || d.success === 'true')) { okScreen(); return; }
+        var msg = (d && d.message) ? String(d.message) : '';
+        if (/activat|confirm|verif/i.test(msg)) {
+          // 아직 이메일 인증 전 — 신청은 접수됨, 관리자 인증 필요
+          okScreen();
+        } else if (/web server|html file/i.test(msg)) {
+          // 미리보기·로컬 파일에서는 FormSubmit이 차단됨 (실제 게시 사이트에서는 정상)
+          alert('이 폼은 실제 홈페이지(웹서버)에 게시된 상태에서만 전송됩니다.\n지금은 미리보기 환경이라 전송이 제한됩니다.\n\n급하시면 전화(010-9691-0177) 또는 카카오톡 채널로 문의해 주세요.');
+        } else {
+          alert('전송에 실패했습니다.' + (msg ? '\n(' + msg + ')' : '') + '\n전화(010-9691-0177)로 문의해 주세요.');
+        }
+      })
+      .catch(function(){ alert('전송 중 오류가 발생했습니다. 전화(010-9691-0177)로 문의해 주세요.'); });
+  }
+
+  componentDidMount() {
+    var brand = this.props.primaryColor;
+    if (brand) {
+      document.documentElement.style.setProperty('--brand', brand);
+      document.documentElement.style.setProperty('--brand-d', this.darken(brand));
+    }
+    this.initReveal();
+    this.initType();
+    this.initTilt();
+    this.initGlow();
+    this.initFlair();
+    this.initCounters();
+    this.initScroll();
+    this.initHeroBg();
+    this.initHeroVideo();
+  }
+
+  initHeroVideo() {
+    var all = Array.prototype.slice.call(document.querySelectorAll('video'));
+    var bg = all.filter(function(x){ var s = x.querySelector('source'); return s && (s.src.indexOf('hero-bg') > -1 || s.src.indexOf('stats-bg') > -1 || s.src.indexOf('growth-bg') > -1); });
+    if (!bg.length) return;
+    bg.forEach(function(v){ v.muted = true; v.loop = true; v.setAttribute('playsinline', ''); });
+    var playAll = function(){ bg.forEach(function(v){ try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e){} }); };
+    document.addEventListener('visibilitychange', function(){ if (!document.hidden) playAll(); });
+    window.addEventListener('focus', playAll);
+    playAll();
+    if (this.__heroVidTimer) clearInterval(this.__heroVidTimer);
+    this.__heroVidTimer = setInterval(function(){ bg.forEach(function(v){ if (v.paused || v.ended) { try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e){} } }); }, 1000);
+  }
+
+  componentDidUpdate(prev) {
+    if (prev && prev.props && prev.props.heroVariant !== this.props.heroVariant) {
+      var self = this;
+      setTimeout(function(){ self.initReveal(); self.initType(); }, 30);
+    }
+    if (prev && prev.props && prev.props.heroBg !== this.props.heroBg) {
+      this.initHeroBg();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.__heroRAF) cancelAnimationFrame(this.__heroRAF);
+    if (this.__heroResize) window.removeEventListener('resize', this.__heroResize);
+    if (this.__heroMove) window.removeEventListener('mousemove', this.__heroMove);
+    if (this.__heroVidTimer) clearInterval(this.__heroVidTimer);
+  }
+
+  initHeroBg() {
+    var self = this;
+    var canvas = document.getElementById('heroCanvas');
+    if (!canvas) return;
+    if (this.__heroRAF) cancelAnimationFrame(this.__heroRAF);
+    if (this.__heroResize) window.removeEventListener('resize', this.__heroResize);
+    if (this.__heroMove) window.removeEventListener('mousemove', this.__heroMove);
+
+    window.__omHero = this;
+    var mode = this.__forceBg || this.props.heroBg || 'particles';
+    var ctx = canvas.getContext('2d');
+    if (mode === 'none') { canvas.width = 0; canvas.height = 0; return; }
+
+    var W = 1, H = 1, DPR = 1;
+    function resize() {
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      W = canvas.clientWidth || canvas.offsetWidth || 1000;
+      H = canvas.clientHeight || canvas.offsetHeight || 700;
+      canvas.width = Math.round(W * DPR);
+      canvas.height = Math.round(H * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+    resize();
+    this.__heroResize = resize;
+    window.addEventListener('resize', resize);
+
+    var mx = 0, my = 0, tmx = 0, tmy = 0;
+    this.__heroMove = function (e) {
+      var r = canvas.getBoundingClientRect();
+      tmx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      tmy = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    };
+    window.addEventListener('mousemove', this.__heroMove);
+
+    var C = this.props.primaryColor || '#2B6EF6';
+    function hx(h) { var n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+    var rgb = hx(C), rgbL = [Math.min(255, rgb[0] + 60), Math.min(255, rgb[1] + 60), Math.min(255, rgb[2] + 40)];
+    function col(a, light) { var c = light ? rgbL : rgb; return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+
+    // ---------- build scene ----------
+    var pts = [], grid = null, shapes = null, blobs = null;
+    if (mode === 'particles') {
+      for (var i = 0; i < 110; i++) {
+        pts.push({ x: (Math.random() - 0.5) * 940, y: (Math.random() - 0.5) * 640, z: (Math.random() - 0.5) * 940 });
+      }
+    } else if (mode === 'globe') {
+      var N = 320, off = 2 / N, inc = Math.PI * (3 - Math.sqrt(5)), R = 300;
+      for (var k = 0; k < N; k++) {
+        var yy = k * off - 1 + off / 2, r2 = Math.sqrt(1 - yy * yy), phi = k * inc;
+        pts.push({ x: Math.cos(phi) * r2 * R, y: yy * R, z: Math.sin(phi) * r2 * R });
+      }
+    } else if (mode === 'wavemesh') {
+      grid = { cols: 30, rows: 18, sp: 46 };
+    } else if (mode === 'aurora') {
+      blobs = [];
+      for (var b = 0; b < 5; b++) {
+        blobs.push({ x: Math.random(), y: Math.random(), r: 240 + Math.random() * 220, sx: (Math.random() - 0.5) * 0.00016, sy: (Math.random() - 0.5) * 0.00016, ph: Math.random() * 6.28, light: b % 2 === 0 });
+      }
+    }
+
+    function proj(x, y, z, f) { var s = f / (f + z); return [W / 2 + x * s, H / 2 + y * s, s]; }
+
+    var t0 = performance.now();
+    function frame(now) {
+      var t = (now - t0) / 1000;
+      mx += (tmx - mx) * 0.05; my += (tmy - my) * 0.05;
+      ctx.clearRect(0, 0, W, H);
+
+      if (mode === 'particles' || mode === 'globe') {
+        var ay = t * (mode === 'globe' ? 0.28 : 0.16) + mx * 0.6;
+        var ax = (mode === 'globe' ? 0.35 : 0.1) + my * 0.4;
+        var ca = Math.cos(ay), sa = Math.sin(ay), cb = Math.cos(ax), sb = Math.sin(ax);
+        var f = 780, sc = [];
+        for (var i = 0; i < pts.length; i++) {
+          var p = pts[i];
+          var x1 = p.x * ca - p.z * sa, z1 = p.x * sa + p.z * ca;
+          var y1 = p.y * cb - z1 * sb, z2 = p.y * sb + z1 * cb;
+          var pr = proj(x1, y1, z2, f);
+          sc.push({ x: pr[0], y: pr[1], s: pr[2], z: z2 });
+        }
+        // links
+        var lim = mode === 'globe' ? 66 : 150;
+        for (var a = 0; a < sc.length; a++) {
+          for (var c = a + 1; c < sc.length; c++) {
+            var dx = sc[a].x - sc[c].x, dy = sc[a].y - sc[c].y, d = Math.sqrt(dx * dx + dy * dy);
+            if (d < lim) {
+              ctx.strokeStyle = col((1 - d / lim) * 0.5 * Math.min(sc[a].s, sc[c].s));
+              ctx.lineWidth = 1.1;
+              ctx.beginPath(); ctx.moveTo(sc[a].x, sc[a].y); ctx.lineTo(sc[c].x, sc[c].y); ctx.stroke();
+            }
+          }
+        }
+        for (var a = 0; a < sc.length; a++) {
+          var r = Math.max(0.8, (mode === 'globe' ? 2.4 : 3.2) * sc[a].s);
+          ctx.beginPath(); ctx.arc(sc[a].x, sc[a].y, r, 0, 6.283);
+          ctx.fillStyle = col(0.5 + 0.45 * sc[a].s, a % 3 === 0); ctx.fill();
+        }
+      } else if (mode === 'wavemesh') {
+        var cols = grid.cols, rows = grid.rows, sp = grid.sp, f = 620;
+        var tilt = 1.02 + my * 0.25, ct = Math.cos(tilt), st = Math.sin(tilt);
+        var yaw = mx * 0.5, cy = Math.cos(yaw), sy2 = Math.sin(yaw);
+        var g = [];
+        for (var r = 0; r < rows; r++) {
+          g[r] = [];
+          for (var cc = 0; cc < cols; cc++) {
+            var gx = (cc - (cols - 1) / 2) * sp;
+            var gz = (r - (rows - 1) / 2) * sp + 60;
+            var h = Math.sin(gx * 0.012 + t * 1.1) * 34 + Math.cos(gz * 0.016 - t * 0.9) * 30;
+            var x1 = gx * cy - gz * sy2, z1 = gx * sy2 + gz * cy;
+            var y1 = h * ct - z1 * st + 120, z2 = h * st + z1 * ct + 240;
+            g[r][cc] = proj(x1, y1, z2, f);
+          }
+        }
+        for (var r = 0; r < rows; r++) {
+          for (var cc = 0; cc < cols; cc++) {
+            var a = 0.5 * g[r][cc][2];
+            if (cc < cols - 1) { ctx.strokeStyle = col(a * 0.5); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(g[r][cc][0], g[r][cc][1]); ctx.lineTo(g[r][cc + 1][0], g[r][cc + 1][1]); ctx.stroke(); }
+            if (r < rows - 1) { ctx.strokeStyle = col(a * 0.5, true); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(g[r][cc][0], g[r][cc][1]); ctx.lineTo(g[r + 1][cc][0], g[r + 1][cc][1]); ctx.stroke(); }
+          }
+        }
+      } else if (mode === 'aurora') {
+        ctx.globalCompositeOperation = 'lighter';
+        for (var b = 0; b < blobs.length; b++) {
+          var bl = blobs[b];
+          var px = (bl.x + Math.sin(t * 0.5 + bl.ph) * 0.12 + mx * 0.05) * W;
+          var py = (bl.y + Math.cos(t * 0.42 + bl.ph) * 0.12 + my * 0.05) * H;
+          var gr = ctx.createRadialGradient(px, py, 0, px, py, bl.r);
+          gr.addColorStop(0, col(0.24, bl.light));
+          gr.addColorStop(1, col(0, bl.light));
+          ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(px, py, bl.r, 0, 6.283); ctx.fill();
+        }
+        ctx.globalCompositeOperation = 'source-over';
+      }
+      self.__heroRAF = requestAnimationFrame(frame);
+    }
+    this.__heroRAF = requestAnimationFrame(frame);
+  }
+
+  darken(hex) {
+    try {
+      var n = parseInt(hex.slice(1), 16);
+      var r = Math.max(0, ((n >> 16) & 255) - 26), g = Math.max(0, ((n >> 8) & 255) - 26), b = Math.max(0, (n & 255) - 26);
+      return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    } catch (e) { return hex; }
+  }
+
+  initReveal() {
+    try {
+      var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]')).filter(function(el){ var t = el.tagName; return t !== 'H1' && t !== 'H2'; });
+      var vw = window.innerWidth || 1200;
+      els.forEach(function(el){
+        if (el.__revInit) return;
+        el.__revInit = true;
+        var r = el.getBoundingClientRect();
+        var cx = r.left + r.width / 2;
+        var dx = el.hasAttribute('data-zoom') ? 0 : (cx < vw * 0.38 ? -52 : (cx > vw * 0.62 ? 52 : 0));
+        el.__dx = dx;
+        var bouncy = el.hasAttribute('data-svc') || el.closest('#reviews') || el.closest('#why');
+        el.style.transition = bouncy
+          ? 'opacity 1s ease,transform .9s cubic-bezier(.34,1.56,.64,1)'
+          : 'opacity 1.5s cubic-bezier(.16,1,.3,1),transform 1.6s cubic-bezier(.16,1,.3,1)';
+        if (bouncy) el.style.transform = 'translateY(40px) scale(.9)';
+        el.style.opacity = '0';
+        el.style.transform = el.hasAttribute('data-zoom') ? 'translateY(36px) scale(.93)' : ('translate(' + dx + 'px,36px)');
+      });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var el = e.target;
+          if (e.isIntersecting) {
+            var d = el.getAttribute('data-delay');
+            el.style.transitionDelay = (d ? d : 0) + 'ms';
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          } else {
+            el.style.transitionDelay = '0ms';
+            el.style.opacity = '0';
+            el.style.transform = el.hasAttribute('data-zoom') ? 'translateY(36px) scale(.93)' : ('translate(' + (el.__dx || 0) + 'px,36px)');
+          }
+        });
+      }, { threshold: .12 });
+      els.forEach(function(el){ io.observe(el); });
+    } catch (e) {}
+  }
+
+  initType() {
+    try {
+      function wrap(el, ctr){
+        var nodes = Array.prototype.slice.call(el.childNodes);
+        nodes.forEach(function(n){
+          if (n.nodeType === 3) {
+            var txt = n.nodeValue, frag = document.createDocumentFragment();
+            for (var i = 0; i < txt.length; i++) {
+              var s = document.createElement('span');
+              s.textContent = txt[i];
+              s.style.display = 'inline-block';
+              s.style.opacity = '0';
+              s.style.transform = 'translateY(9px)';
+              s.style.transition = 'opacity .06s linear,transform .42s cubic-bezier(.16,1,.3,1)';
+              s.__delay = Math.min(ctr.i, 80) * 90;
+              s.style.transitionDelay = s.__delay + 'ms';
+              if (txt[i] === ' ') s.style.whiteSpace = 'pre';
+              frag.appendChild(s);
+              ctr.list.push(s); ctr.i++;
+            }
+            el.replaceChild(frag, n);
+          } else if (n.nodeType === 1 && n.tagName !== 'BR') {
+            wrap(n, ctr);
+          }
+        });
+      }
+      var heads = Array.prototype.slice.call(document.querySelectorAll('h1[data-reveal], h2[data-reveal]'));
+      heads.forEach(function(el){
+        if (el.__typed) return; el.__typed = true;
+        var ctr = { i: 0, list: [] };
+        wrap(el, ctr);
+        el.__chars = ctr.list;
+        var caret = document.createElement('span');
+        caret.style.display = 'none';
+        caret.style.width = '3px';
+        caret.style.height = '0.9em';
+        caret.style.background = 'currentColor';
+        caret.style.borderRadius = '2px';
+        caret.style.marginLeft = '4px';
+        caret.style.verticalAlign = '-0.06em';
+        caret.style.animation = 'blink 1.05s step-end infinite';
+        el.appendChild(caret);
+        el.__caret = caret;
+      });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var el = e.target;
+          if (e.isIntersecting) {
+            var maxd = 0;
+            (el.__chars || []).forEach(function(s){ s.style.transitionDelay = (s.__delay || 0) + 'ms'; s.style.opacity = '1'; s.style.transform = 'none'; if ((s.__delay || 0) > maxd) maxd = s.__delay; });
+            if (el.__caret) {
+              el.__caret.style.display = 'none';
+              clearTimeout(el.__caretTimer);
+              el.__caretTimer = setTimeout(function(){ if (el.__caret) el.__caret.style.display = 'inline-block'; }, maxd + 420);
+            }
+          } else {
+            clearTimeout(el.__caretTimer);
+            (el.__chars || []).forEach(function(s){ s.style.transitionDelay = '0ms'; s.style.opacity = '0'; s.style.transform = 'translateY(9px)'; });
+            if (el.__caret) el.__caret.style.display = 'none';
+          }
+        });
+      }, { threshold: .3 });
+      heads.forEach(function(el){ io.observe(el); });
+    } catch (e) {}
+  }
+
+  initTilt() {
+    try {
+      var cards = document.querySelectorAll('#services [data-svc], #why [data-reveal], #reviews [data-reveal], #process [data-step], #free [data-zoom]');
+      Array.prototype.forEach.call(cards, function(card){
+        if (card.__tilt) return; card.__tilt = true;
+        card.style.willChange = 'transform';
+        card.addEventListener('mousemove', function(e){
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5;
+          var py = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transition = 'transform .08s linear';
+          card.style.transform = 'perspective(720px) rotateX(' + (-py * 10).toFixed(2) + 'deg) rotateY(' + (px * 10).toFixed(2) + 'deg) translateY(-12px) scale(1.06)';
+        });
+        card.addEventListener('mouseleave', function(){
+          card.style.transition = 'transform .55s cubic-bezier(.16,1,.3,1)';
+          card.style.transform = 'none';
+        });
+      });
+    } catch (e) {}
+  }
+
+  initGlow() {
+    if (this.__glowInit) return; this.__glowInit = true;
+    try {
+      var g = document.getElementById('cursorGlow');
+      if (!g) return;
+      window.addEventListener('mousemove', function(e){
+        g.style.left = e.clientX + 'px';
+        g.style.top = e.clientY + 'px';
+        g.style.opacity = '1';
+      }, { passive: true });
+      window.addEventListener('mouseout', function(){ g.style.opacity = '0'; }, { passive: true });
+    } catch (e) {}
+  }
+
+  initFlair() {
+    if (this.__flairInit) return; this.__flairInit = true;
+    try {
+      var rnd = function(a, b){ return a + Math.random() * (b - a); };
+      Array.prototype.forEach.call(document.querySelectorAll('[style*="floaty"]'), function(el){
+        el.style.animationDuration = rnd(5, 9.5).toFixed(2) + 's';
+        el.style.animationDelay = (-rnd(0, 6)).toFixed(2) + 's';
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('#services [data-svc], #why [data-reveal], #reviews [data-reveal]'), function(el){
+        el.style.animation = 'borderPulse ' + rnd(5, 9).toFixed(2) + 's ease-in-out infinite';
+        el.style.animationDelay = (-rnd(0, 5)).toFixed(2) + 's';
+      });
+    } catch (e) {}
+  }
+
+  initCounters() {
+    try {
+      var cio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) {
+            var el = e.target, end = parseInt(el.getAttribute('data-count'), 10) || 0, suf = el.getAttribute('data-suffix') || '', t0 = null, dur = 2100;
+            function step(ts){ if (!t0) t0 = ts; var p = Math.min((ts - t0) / dur, 1); var eased = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(end * eased) + suf; if (p < 1) requestAnimationFrame(step); }
+            requestAnimationFrame(step);
+            cio.unobserve(el);
+          }
+        });
+      }, { threshold: .5 });
+      document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+    } catch (e) {}
+  }
+
+  initScroll() {
+    if (this.__scrollInit) return;
+    this.__scrollInit = true;
+    var hd = document.getElementById('hd'), pg = document.getElementById('progress');
+    var blobs = Array.prototype.slice.call(document.querySelectorAll('#top > div[style*="radial-gradient"]'));
+    var ticking = false;
+    function onScroll(){
+      var y = window.scrollY;
+      var sc = y > 10;
+      if (hd) { hd.style.boxShadow = sc ? '0 4px 20px rgba(13,24,38,.06)' : 'none'; hd.style.borderBottomColor = sc ? '#E5EDF8' : 'transparent'; }
+      var h = document.documentElement;
+      var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+      if (pg) pg.style.width = pct + '%';
+      blobs.forEach(function(b, i){ b.style.transform = 'translateY(' + (y * (i % 2 ? 0.22 : -0.16)).toFixed(1) + 'px)'; });
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  }
+
+}
+</script>
+</body>
+</html>
